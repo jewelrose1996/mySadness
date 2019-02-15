@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.Instant;
+import static java.time.Instant.now;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -27,13 +29,13 @@ public final class main extends javax.swing.JFrame {
     public main() {
         initComponents();
         this.setLocationRelativeTo(null);
-        codee= "supply";
+        codee = "supply";
         disTableSupply();
         this.refresh();
-        
+
     }
-    
-    public void reset_textfield(){
+
+    public void reset_textfield() {
         description.setText(null);
         quantity.setText(null);
         uCost.setText(null);
@@ -58,7 +60,6 @@ public final class main extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -82,8 +83,9 @@ public final class main extends javax.swing.JFrame {
         uCost = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         save = new javax.swing.JComboBox<>();
-        jButton11 = new javax.swing.JButton();
+        savebtn = new javax.swing.JButton();
         unit = new javax.swing.JComboBox<>();
+        updatebtn = new javax.swing.JButton();
         title = new javax.swing.JLabel();
         signUp = new javax.swing.JFrame();
         jPanel7 = new javax.swing.JPanel();
@@ -149,8 +151,6 @@ public final class main extends javax.swing.JFrame {
 
         jButton8.setText("Request");
 
-        jButton9.setText("Back");
-
         jButton12.setText("Delete");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -172,7 +172,6 @@ public final class main extends javax.swing.JFrame {
                             .addComponent(update, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
                             .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                            .addComponent(jButton9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -196,9 +195,7 @@ public final class main extends javax.swing.JFrame {
                         .addComponent(jButton12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton9)
-                        .addGap(63, 63, 63))
+                        .addGap(63, 472, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -327,14 +324,21 @@ public final class main extends javax.swing.JFrame {
 
         save.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Supply", "Equipment" }));
 
-        jButton11.setText("SAVE");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        savebtn.setText("SAVE");
+        savebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                savebtnActionPerformed(evt);
             }
         });
 
         unit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ampule", "bar ", "book", "Bottle", "box", "can", "cap", "cartridge", "cone", "container", "cylinder", "each", "gallon", "kilogram", "kit", "liter", "meter", "pad", "pair", "pieces", "ream", "roll", "set", "spool", "stub", "syringes", "tablet", "tin", "tube", "unit", "vial" }));
+
+        updatebtn.setText("UPDATE");
+        updatebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatebtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -365,8 +369,9 @@ public final class main extends javax.swing.JFrame {
                             .addComponent(uCost)
                             .addGroup(jPanel6Layout.createSequentialGroup()
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(save, 0, 97, Short.MAX_VALUE))
+                                    .addComponent(savebtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(save, 0, 97, Short.MAX_VALUE)
+                                    .addComponent(updatebtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(0, 81, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -394,7 +399,9 @@ public final class main extends javax.swing.JFrame {
                     .addComponent(jLabel13)
                     .addComponent(save, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton11)
+                .addComponent(savebtn)
+                .addGap(18, 18, 18)
+                .addComponent(updatebtn)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -414,7 +421,7 @@ public final class main extends javax.swing.JFrame {
         addLayout.setVerticalGroup(
             addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addLayout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -706,19 +713,20 @@ public final class main extends javax.swing.JFrame {
         add.setVisible(true);
         add.setLocationRelativeTo(null);
         title.setText("Add New Supply/Equipment");
+        updatebtn.setVisible(false);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
 
         int s = save.getSelectedIndex();
         if (s == 0) {
             supply();
-        } else if (s == 1){
+        } else if (s == 1) {
             equipment();
         }
 
-    }//GEN-LAST:event_jButton11ActionPerformed
+    }//GEN-LAST:event_savebtnActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
@@ -737,46 +745,97 @@ public final class main extends javax.swing.JFrame {
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
 
-    this.setVisible(false);
-    add.setVisible(true);
-    title.setText("Update Supply/Equipment");
-    add.setLocationRelativeTo(invenFrame);
-    add.setAlwaysOnTop(true);
-    
-    int row = supplies.getSelectedRow();
+        this.setVisible(false);
+        add.setVisible(true);
+        title.setText("Update Supply/Equipment");
+        add.setLocationRelativeTo(invenFrame);
+        savebtn.setVisible(false);
+        add.setAlwaysOnTop(true);
+        save.setVisible(false);
+        jLabel13.setVisible(false);
+        int row = supplies.getSelectedRow();
         Object obj = supplies.getValueAt(row, 0);
-        String id = obj.toString();
-        
-        if(id==null){
+        String itemNo = obj.toString();
+
+        if (itemNo == null) {
             JOptionPane.showMessageDialog(rootPane, "Please select row!");
-        }else{
+        } else {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection(new connection().connect);
+
+                String sql = "select * from supply where itemNo = ?";
+
+                com.mysql.jdbc.PreparedStatement pstmt = (com.mysql.jdbc.PreparedStatement) con.prepareStatement(sql);
+
+                pstmt.setString(1, itemNo);
+                ResultSet rs = pstmt.executeQuery();
+
+                if (rs.next()) {
+                    description.setText(rs.getString("description"));
+                    unit.setSelectedItem(rs.getString("unit"));
+                    quantity.setText(rs.getString("quant"));
+                    uCost.setText(rs.getString("ucost"));
+
+                }
+
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_updateActionPerformed
+
+    private void updatebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebtnActionPerformed
+        String des = description.getText();
+        String uni = unit.getSelectedItem().toString();
+        String quant = quantity.getText();
+        String ucost = uCost.getText();
+
+        int row = supplies.getSelectedRow();
+        Object obj = supplies.getValueAt(row, 0);
+        String itemNo = obj.toString();
+
+        int pro;
+
+        int q = Integer.parseInt(quant);
+        int c = Integer.parseInt(ucost);
+
+        pro = c * q;
+        String proo = Integer.toString(pro);
+       // String date = now().toString();
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
-        Connection con = DriverManager.getConnection(new connection().connect);
-        
+            com.mysql.jdbc.Connection con = (com.mysql.jdbc.Connection) DriverManager.getConnection("jdbc:mysql://localhost/storage?", "root", "");
 
-            String sql = "select * from supply where id = ?";
-            
+            String sql = "update supply set description = ?, unit = ?, quant = ?, ucost =?, result = ?, date_s = now() where itemNo = ? ;";
+
             com.mysql.jdbc.PreparedStatement pstmt = (com.mysql.jdbc.PreparedStatement) con.prepareStatement(sql);
-            
-            pstmt.setString(1, id);
-            ResultSet rs = pstmt.executeQuery();
-            
-            if(rs.next()){
-                description.setText(rs.getString("description"));
-                unit.setSelectedItem(rs.getString("unit"));
-                quantity.setText(rs.getString("quant"));
-                uCost.setText("ucost");
-                
-            }
-            
+
+            pstmt.setString(1, des);
+            pstmt.setString(2, uni);
+            pstmt.setString(3, quant);
+            pstmt.setString(4, ucost);
+            pstmt.setString(5, proo);
+            //pstmt.setString(6, date);
+            pstmt.setString(6, itemNo);
+
+            pstmt.executeUpdate();
+            add.setAlwaysOnTop(false);
+            JOptionPane.showMessageDialog(rootPane, "updated success!");
+            add.setVisible(false);
+
+            this.disTableSupply();
+
+            this.refresh();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }    
-    }//GEN-LAST:event_updateActionPerformed
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_updatebtnActionPerformed
 
     public void supply() {
         codee = " supply ";
@@ -784,7 +843,7 @@ public final class main extends javax.swing.JFrame {
         this.refresh();
 
     }
-    
+
     public void equipment() {
         codee = " equipment ";
         codez();
@@ -834,14 +893,12 @@ public final class main extends javax.swing.JFrame {
     private javax.swing.JFrame invenFrame;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -879,17 +936,19 @@ public final class main extends javax.swing.JFrame {
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField quantity;
     private javax.swing.JComboBox<String> save;
+    private javax.swing.JButton savebtn;
     private javax.swing.JFrame signUp;
     private javax.swing.JTable supplies;
     private javax.swing.JLabel title;
     private javax.swing.JTextField uCost;
     private javax.swing.JComboBox<String> unit;
     private javax.swing.JButton update;
+    private javax.swing.JButton updatebtn;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 
     private String codee;
-    
+
     public void codez() {
         String des = description.getText();
         String quan = quantity.getText();
@@ -897,12 +956,14 @@ public final class main extends javax.swing.JFrame {
         String uni = unit.getSelectedItem().toString();
 
         int pro;
-                
-                int q = Integer.parseInt(quan);
-                int c = Integer.parseInt(cost);
-               
-                pro = c * q;
-         String proo = Integer.toString(pro);
+
+        int q = Integer.parseInt(quan);
+        int c = Integer.parseInt(cost);
+
+        pro = c * q;
+        String proo = Integer.toString(pro);
+
+        // int avail;
         if (description.getText().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane,
                     "Please Fill-up all the fields before saving!", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -925,14 +986,14 @@ public final class main extends javax.swing.JFrame {
                 pstmt.setString(2, uni);
                 pstmt.setString(3, quan);
                 pstmt.setString(4, cost);
-               pstmt.setString(5, proo);
+                pstmt.setString(5, proo);
 
                 pstmt.executeUpdate();
                 //JOptionPane.showMessageDialog(this, "Data Saved");
 
                 JOptionPane.showMessageDialog(this, "Data Saved");
-        
-      this.reset_textfield();
+
+                this.reset_textfield();
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
@@ -944,9 +1005,8 @@ public final class main extends javax.swing.JFrame {
         invenFrame.setVisible(true);
         this.refresh();
 
-        
     }
-    
+
     public void disTableSupply() {
         try {
 
@@ -956,7 +1016,7 @@ public final class main extends javax.swing.JFrame {
             Statement stmt = con.createStatement();
 
             ResultSet rs = stmt.executeQuery("select * from " + codee);
-            
+
             DefaultTableModel model = (DefaultTableModel) supplies.getModel();
             model.setRowCount(0);
             while (rs.next()) {
@@ -970,31 +1030,30 @@ public final class main extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    
-     public void refresh(){
-        try{
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection con = DriverManager.getConnection(new connection().connect);
-        
-        Statement stmt = con.createStatement();
-        
-        ResultSet rs = stmt.executeQuery("select * from "+ codee + ";");
-        
-        DefaultTableModel model = (DefaultTableModel) supplies.getModel();
-        model.setRowCount(0);
-        while(rs.next()){
-            model.addRow(new Object[]{rs.getInt("itemNo"), rs.getString("description"),
+
+    public void refresh() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(new connection().connect);
+
+            Statement stmt = con.createStatement();
+
+            ResultSet rs = stmt.executeQuery("select * from " + codee + ";");
+
+            DefaultTableModel model = (DefaultTableModel) supplies.getModel();
+            model.setRowCount(0);
+            while (rs.next()) {
+                model.addRow(new Object[]{rs.getInt("itemNo"), rs.getString("description"),
                     rs.getString("unit"), rs.getInt("quant"), rs.getInt("ucost"), rs.getInt("result"), rs.getString("date_s")});
-        }
-        
-        
+            }
+
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-        
+        }
+
     }
 }

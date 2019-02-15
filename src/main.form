@@ -68,7 +68,6 @@
                                       <Component id="update" linkSize="2" alignment="1" pref="67" max="32767" attributes="0"/>
                                       <Component id="jButton8" linkSize="2" alignment="1" max="32767" attributes="0"/>
                                       <Component id="jButton4" linkSize="2" alignment="1" pref="67" max="32767" attributes="0"/>
-                                      <Component id="jButton9" alignment="1" max="32767" attributes="0"/>
                                       <Component id="jButton12" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -95,9 +94,7 @@
                                   <Component id="jButton12" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jButton8" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jButton9" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                                  <EmptySpace min="63" pref="472" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jScrollPane3" pref="586" max="32767" attributes="0"/>
@@ -207,11 +204,6 @@
                 <Component class="javax.swing.JButton" name="jButton8">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Request"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JButton" name="jButton9">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Back"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton12">
@@ -394,7 +386,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="57" max="32767" attributes="0"/>
+                  <EmptySpace pref="16" max="32767" attributes="0"/>
                   <Component id="title" min="-2" pref="31" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
@@ -444,8 +436,9 @@
                                   <Component id="uCost" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jButton11" max="32767" attributes="0"/>
+                                          <Component id="savebtn" max="32767" attributes="0"/>
                                           <Component id="save" pref="97" max="32767" attributes="0"/>
+                                          <Component id="updatebtn" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="81" max="32767" attributes="0"/>
                                   </Group>
@@ -485,7 +478,9 @@
                           <Component id="save" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton11" min="-2" max="-2" attributes="0"/>
+                      <Component id="savebtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="updatebtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="26" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -536,12 +531,12 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton11">
+            <Component class="javax.swing.JButton" name="savebtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="SAVE"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton11ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="savebtnActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="unit">
@@ -585,6 +580,14 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="updatebtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="UPDATE"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updatebtnActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
