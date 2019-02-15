@@ -17,7 +17,7 @@ public class TableSupplies {
 
     },
     new String [] {
-        "Item No.", "Description", "Unit", "Quantity", "Cost (per unit)", "Total Amount", "Available Items", "Date Recorded"
+        "Item No.", "Description", "Unit", "Quantity", "Cost (per unit)", "Total Amount", "Date Recorded", "Available Items"
     }
 ) {
     boolean[] canEdit = new boolean [] {

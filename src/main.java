@@ -27,7 +27,9 @@ public final class main extends javax.swing.JFrame {
     public main() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+        codee= "supply";
+        disTableSupply();
+        this.refresh();
         
     }
     
@@ -52,11 +54,12 @@ public final class main extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         supplies = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        update = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         changepass = new javax.swing.JDialog();
@@ -81,6 +84,7 @@ public final class main extends javax.swing.JFrame {
         save = new javax.swing.JComboBox<>();
         jButton11 = new javax.swing.JButton();
         unit = new javax.swing.JComboBox<>();
+        title = new javax.swing.JLabel();
         signUp = new javax.swing.JFrame();
         jPanel7 = new javax.swing.JPanel();
         jTextField3 = new javax.swing.JTextField();
@@ -114,7 +118,7 @@ public final class main extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Item No.", "Description", "Unit", "Quantity", "Cost (per unit)", "Total Amount", "Available Items", "Date Recorded"
+                "Item No.", "Description", "Unit", "Quantity", "Cost (per unit)", "Total Amount", "Date Recorded", "Available Items"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -134,13 +138,20 @@ public final class main extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Delete");
+        update.setText("Update");
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Search");
 
         jButton8.setText("Request");
 
         jButton9.setText("Back");
+
+        jButton12.setText("Delete");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -157,15 +168,16 @@ public final class main extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(update, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                            .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                            .addComponent(jButton9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton4, jButton6, jButton8});
+        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton4, jButton8, update});
 
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,7 +191,9 @@ public final class main extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton6)
+                        .addComponent(update)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -295,7 +309,9 @@ public final class main extends javax.swing.JFrame {
         );
 
         add.setTitle("ADD PRODUCT");
-        add.setMinimumSize(new java.awt.Dimension(320, 330));
+        add.setMinimumSize(new java.awt.Dimension(310, 365));
+        add.setPreferredSize(new java.awt.Dimension(310, 370));
+        add.setResizable(false);
 
         jPanel6.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -379,8 +395,10 @@ public final class main extends javax.swing.JFrame {
                     .addComponent(save, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton11)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
+
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout addLayout = new javax.swing.GroupLayout(add.getContentPane());
         add.getContentPane().setLayout(addLayout);
@@ -388,20 +406,22 @@ public final class main extends javax.swing.JFrame {
             addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         addLayout.setVerticalGroup(
             addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(addLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addLayout.createSequentialGroup()
+                .addContainerGap(57, Short.MAX_VALUE)
+                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
 
-        signUp.setMaximumSize(new java.awt.Dimension(404, 300));
         signUp.setMinimumSize(new java.awt.Dimension(404, 300));
-        signUp.setPreferredSize(new java.awt.Dimension(450, 350));
         signUp.setResizable(false);
 
         jLabel14.setText("First Name");
@@ -685,6 +705,7 @@ public final class main extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         add.setVisible(true);
         add.setLocationRelativeTo(null);
+        title.setText("Add New Supply/Equipment");
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -714,16 +735,60 @@ public final class main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+
+    this.setVisible(false);
+    add.setVisible(true);
+    title.setText("Update Supply/Equipment");
+    add.setLocationRelativeTo(invenFrame);
+    add.setAlwaysOnTop(true);
+    
+    int row = supplies.getSelectedRow();
+        Object obj = supplies.getValueAt(row, 0);
+        String id = obj.toString();
+        
+        if(id==null){
+            JOptionPane.showMessageDialog(rootPane, "Please select row!");
+        }else{
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection(new connection().connect);
+        
+
+            String sql = "select * from supply where id = ?";
+            
+            com.mysql.jdbc.PreparedStatement pstmt = (com.mysql.jdbc.PreparedStatement) con.prepareStatement(sql);
+            
+            pstmt.setString(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            
+            if(rs.next()){
+                description.setText(rs.getString("description"));
+                unit.setSelectedItem(rs.getString("unit"));
+                quantity.setText(rs.getString("quant"));
+                uCost.setText("ucost");
+                
+            }
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }    
+    }//GEN-LAST:event_updateActionPerformed
 
     public void supply() {
         codee = " supply ";
         codez();
+        this.refresh();
 
     }
     
     public void equipment() {
         codee = " equipment ";
         codez();
+        this.refresh();
     }
 
     /**
@@ -770,10 +835,10 @@ public final class main extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
@@ -816,8 +881,10 @@ public final class main extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> save;
     private javax.swing.JFrame signUp;
     private javax.swing.JTable supplies;
+    private javax.swing.JLabel title;
     private javax.swing.JTextField uCost;
     private javax.swing.JComboBox<String> unit;
+    private javax.swing.JButton update;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 
@@ -875,6 +942,7 @@ public final class main extends javax.swing.JFrame {
         }
         this.setVisible(false);
         invenFrame.setVisible(true);
+        this.refresh();
 
         
     }
@@ -887,19 +955,46 @@ public final class main extends javax.swing.JFrame {
 
             Statement stmt = con.createStatement();
 
-            ResultSet rs = stmt.executeQuery("select * from" + codee);
+            ResultSet rs = stmt.executeQuery("select * from " + codee);
             
             DefaultTableModel model = (DefaultTableModel) supplies.getModel();
             model.setRowCount(0);
             while (rs.next()) {
                 model.addRow(new Object[]{rs.getInt("itemNo"), rs.getString("description"),
-                    rs.getInt("ucost"), rs.getString("unit"), rs.getInt("quant"), rs.getString("result")});
+                    rs.getString("unit"), rs.getInt("quant"), rs.getInt("ucost"), rs.getInt("result"), rs.getString("date_s")});
             }
 
+            this.refresh();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+    }
+    
+     public void refresh(){
+        try{
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con = DriverManager.getConnection(new connection().connect);
+        
+        Statement stmt = con.createStatement();
+        
+        ResultSet rs = stmt.executeQuery("select * from "+ codee + ";");
+        
+        DefaultTableModel model = (DefaultTableModel) supplies.getModel();
+        model.setRowCount(0);
+        while(rs.next()){
+            model.addRow(new Object[]{rs.getInt("itemNo"), rs.getString("description"),
+                    rs.getString("unit"), rs.getInt("quant"), rs.getInt("ucost"), rs.getInt("result"), rs.getString("date_s")});
+        }
+        
+        
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        
     }
 }
