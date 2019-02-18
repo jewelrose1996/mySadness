@@ -65,11 +65,13 @@
                                   <Component id="jScrollPane3" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="update" linkSize="2" alignment="1" pref="67" max="32767" attributes="0"/>
-                                      <Component id="jButton8" linkSize="2" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jButton4" linkSize="2" alignment="1" pref="67" max="32767" attributes="0"/>
+                                      <Component id="update" linkSize="2" alignment="0" pref="67" max="32767" attributes="0"/>
+                                      <Component id="jButton8" linkSize="2" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jButton4" linkSize="2" alignment="0" pref="67" max="32767" attributes="0"/>
                                       <Component id="jButton12" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButton5" max="32767" attributes="0"/>
+                                      <Component id="jButton6" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jButton9" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -100,6 +102,10 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jButton8" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jButton9" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jButton5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                               </Group>
@@ -217,6 +223,16 @@
                 <Component class="javax.swing.JButton" name="jButton5">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="jButton5"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton6">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Exit"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton9">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jButton9"/>
                   </Properties>
                 </Component>
               </SubComponents>
